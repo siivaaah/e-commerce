@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block background %}
+{% endblock %}
+
+{% block content %}
+
+{% if pro.exists %}
+
+<h1 class="text-center">Search Results</h1>
+<div class="card mt-5 mb-3 mx-auto" style="max-width:950px; height:auto;">
+
+    {% csrf_token %}
+        {% for i in pro %}
+  <div class="row g-0 mx-auto">
+    <div class="col-md-4 mx-auto">
+      <img src="{{i.image.url}}" class="img-fluid rounded-star mt-5 mx-auto" alt="...">
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <h4>Description</h4>
+        <p class="card-text">{{i.desc}}</p>
+        <h4>Price</h4>
+        <p class="card-text">{{i.price}}</p>
+        <h4>Available Stock</h4>
+        <p class="card-text">{{i.stock}}</p>
+      </div>
+    </div>
+            {% endfor %}
+  </div>
+</div>
+{% else %}
+
+<h2>Not Found!</h2>
+
+{% endif %}
+
+{% endblock %}

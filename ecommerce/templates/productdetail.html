@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block background %}
+{% endblock %}
+
+{% block content %}
+
+<div class="card mt-5 mb-3 mx-auto" style="max-width:950px; height:auto;">
+  <div class="row g-0 mx-auto">
+    <div class="col-md-4 mx-auto">
+      <img src="{{pro.image.url}}" class="img-fluid rounded-star mt-5 mx-auto" alt="...">
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="card-body">
+        <h5 class="card-title">{{pro.name}}</h5>
+        <h4>Description</h4>
+        <p class="card-text">{{pro.desc}}</p>
+        <h4>Price</h4>
+        <p class="card-text">{{pro.price}}</p>
+        <h4>Available Stock</h4>
+        <p class="card-text">{{pro.stock}}</p>
+        {% if user.is_superuser %}
+           {% if pro.stock > 0 %}
+              <p>Product in Stock</p>
+              <h4 class="btn btn-outline-success"><a href="{% url 'shop:addstock' pro.id %}">Add Stock</a></h4>
+          {% else %}
+              <p>Product Out of Stock</p>
+              <h4 class="btn btn-outline-success"><a href="{% url 'shop:addstock' pro.id %}">Add Stock</a></h4>
+          {% endif %}
+        {% else %}
+          {% if pro.stock > 0 %}
+             <h4 class="btn btn-outline-success"><a href="{% url 'cart:addtocart' pro.id %}">Add to Cart</a></h4>
+          {% else %}
+              <p>Product Out of Stock</p>
+         {% endif %}
+        {% endif %}
+             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block background %}
+{% endblock %}
+
+{% block content %}
+
+<h3 class="text-center">Order View</h3>
+{% for i in order %}
+<div class="card mt-5 mb-3 mx-auto" style="max-width:950px; height:auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{i.product.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <h5 class="card-title">Product name:-{{i.product.name}}</h5>
+        <li class="list-group-item">Price:{{i.product.price}}</li>
+        <li class="list-group-item">No. of Items:{{i.no_of_items}}</li>
+        <li class="list-group-item">Order ID:{{i.order_id}}</li>
+        <li class="list-group-item"><b>Delivery Status:{{i.delivery_status}}</b></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+<!--{% for i in order %}-->
+<!--<div class="card mx-auto" style="width: 18rem;">-->
+<!--  <img src="{{i.product.image.url}}" class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Product name:-{{i.product.name}}</h5>-->
+
+<!--  </div>-->
+<!--  <ul class="list-group list-group-flush">-->
+<!--    <li class="list-group-item">Price:{{i.product.price}}</li>-->
+<!--    <li class="list-group-item">No. of Items:{{i.no_of_items}}</li>-->
+<!--    <li class="list-group-item">Order ID:{{i.order_id}}</li>-->
+<!--    <li class="list-group-item">Delivery Status:{{i.delivery_status}}</li>-->
+<!--  </ul>-->
+<!--  <div class="card-body">-->
+<!--    <a href="#" class="card-link">Card link</a>-->
+<!--    <a href="#" class="card-link">Another link</a>-->
+<!--  </div>-->
+<!--</div>-->
+<!--{% endfor %}-->
